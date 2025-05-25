@@ -1,0 +1,20 @@
+name: practice gs actions
+on: push
+jobs:
+    testing:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code checkout
+              uses: actions/checkout
+            - name: setup node
+              uses: actions/setup-node
+              with:
+                node-version: 18
+            - name: install dependencies
+              run: npm ci
+            - name: lint code
+              run: npm run lint
+            - name: build code
+              run: npm run build
+            - name: deploy
+              run: echo "deploying"
